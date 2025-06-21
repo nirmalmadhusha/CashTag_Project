@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material-style theme colors for Light mode -->
+    <color name="primary">#388E3C</color>            <!-- Forest Green -->
+    <color name="onPrimary">#FFFFFF</color>          <!-- White text on primary -->
+    <color name="secondary">#03A9F4</color>          <!-- Sky Blue -->
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="background">#E6E6E6</color>         <!-- Light gray background -->
+    <color name="onBackground">#212121</color>       <!-- Primary text on light -->
+
+    <!-- Basic colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightGray">#F5F5F5</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="darkGray">#444444</color>
+
+    <!-- Text colors -->
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="textTitle">#1A1A1A</color>
+
+    <!-- Backgrounds -->
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="backgroundCard">#FAFAFA</color>
+
+    <!-- Progress Bars -->
+    <color name="progressBar">#22C55E</color>
+
+    <!-- Accent colors -->
+    <color name="cashGreen">#4CAF50</color>
+    <color name="warningRed">#F44336</color>
+    <color name="infoBlue">#2196F3</color>
+    <color name="softYellow">#FFEB3B</color>
+    <color name="deepOrange">#FF5722</color>
+
+    <!-- shop card background colors -->
+    <color name="shopColor1">#56B14B</color>  <!-- Medium Green (Keels green) -->
+    <color name="shopColor2">#A6D8D4</color>  <!-- Cool Aqua -->
+    <color name="shopColor3">#6BCB77</color>  <!-- Fresh Green -->
+    <color name="shopColor4">#2F9E44</color>  <!-- Dark Mint Green -->
+    <color name="shopColor5">#4D96FF</color>  <!-- Bright Blue -->
+    <color name="shopColor6">#C9F0FF</color>  <!-- Pale Sky Blue -->
+    <color name="shopColor7">#D0F4DE</color>  <!-- Mint Green -->
+    <color name="shopColor8">#90CAF9</color>  <!-- Soft Blue -->
+    <color name="shopColor9">#B5EAEA</color>  <!-- Pale Cyan -->
+    <color name="shopColor10">#2874A6</color> <!-- Deep Blue -->
+    <color name="shopColor11">#52B788</color> <!-- Strong Lime-Green -->
+    <color name="shopColor12">#4C956C</color> <!-- Soft Teal -->
+    <color name="shopColor13">#8FC1B3</color> <!-- Muted Teal -->
+    <color name="shopColor14">#A0AEC0</color> <!-- Muted Blue-Grey -->
+    <color name="shopColor15">#E3F2FD</color> <!-- Very Light Blue (near white) -->
+
+    <!-- Custom extras -->
+    <color name="dashboardHighlight">#EDEA67</color>
+    <color name="scrollContainerBg">#DC000000</color>
+    <color name="shopCardBg">#FFFFFF</color>
+    <color name="shopCardBtn">#000000</color>
+
+</resources>
+

@@ -1,0 +1,80 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CashTag" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:textColorPrimary">@color/onBackground</item>
+        <item name="android:statusBarColor">@color/background</item>
+    </style>
+    <style name="ShapeAppearance.App.CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item> <!-- 50% makes it a circle if width and height are equal -->
+    </style>
+    <!-- Or for specific corner radius -->
+    <style name="ShapeAppearance.App.RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Main Text -->
+    <style name="App.design.MainText" parent="">
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textSize">12pt</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Dashboard items -->
+    <style name="Color.Dashboard.Total.view" parent="">
+        <item name="android:background">@drawable/rounded_corners_background</item>
+        <item name="android:backgroundTint">@color/dashboardHighlight</item>
+    </style>
+    <style name="Color.Dashboard.Scroll.view" parent="">
+        <item name="android:background">@drawable/rounded_corners_background</item>
+        <item name="android:backgroundTint">@color/scrollContainerBg</item>
+    </style>
+    <style name="Color.Dashboard.Progress.view" parent="">
+        <item name="android:background">@drawable/rounded_corners_background</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+    <style name="Color.Dashboard.Progress.bar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressTint">@color/progressBar</item>
+    </style>
+
+    <!-- Add Expense Fragment -->
+
+    <!-- scan mode style -->
+    <style name="AddExpense.background" parent="">
+        <item name="android:background">@drawable/image_preview_day</item>
+    </style>
+
+
+    <!-- Add Shops Fragment Style -->
+    <style name="Color.AddShops.CardView.Background" parent="">
+        <item name="cardBackgroundColor">@color/shopCardBg</item>
+    </style>
+
+    <style name="Color.AddShops.CardView.Background.ShopName" parent="">
+        <item name="android:textColor">@color/textTitle</item>
+    </style>
+    <style name="Color.AddShops.CardView.Button" parent="">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginVertical">10dp</item>
+        <item name="marginHorizontal">10dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconSize">16dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">5dp</item>
+        <item name="backgroundTint">@color/shopCardBtn</item>
+    </style>
+
+    <style name="Theme.CashTag" parent="Base.Theme.CashTag" />
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material-style theme colors for Dark mode -->
+    <color name="primary">#81C784</color>            <!-- Light green (muted) -->
+    <color name="onPrimary">#000000</color>          <!-- Black text on light green -->
+    <color name="secondary">#4FC3F7</color>          <!-- Muted blue -->
+    <color name="onSecondary">#000000</color>
+    <color name="background">#121212</color>         <!-- True dark background -->
+    <color name="onBackground">#FFFFFF</color>       <!-- White text on dark -->
+
+    <!-- Basic colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightGray">#2A2A2A</color>
+    <color name="gray">#555555</color>
+    <color name="darkGray">#BBBBBB</color>
+
+    <!-- Text colors -->
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#BDBDBD</color>
+    <color name="textTitle">#E0E0E0</color>
+
+    <!-- Backgrounds -->
+    <color name="backgroundLight">#121212</color>
+    <color name="backgroundCard">#1E1E1E</color>
+
+    <!-- Progress Bars -->
+    <color name="progressBar">#86EFAC</color>
+
+    <!-- icon colors -->
+
+
+    <!-- Accent colors -->
+    <color name="cashGreen">#81C784</color>
+    <color name="warningRed">#E57373</color>
+    <color name="infoBlue">#64B5F6</color>
+    <color name="softYellow">#FFF176</color>
+    <color name="deepOrange">#FF8A65</color>
+
+    <!-- shop card background colors -->
+    <color name="shopColor1">#6B4F4F</color>   <!-- Dark Mauve -->
+    <color name="shopColor2">#3B6978</color>   <!-- Deep Teal -->
+    <color name="shopColor3">#204051</color>   <!-- Dark Blue-Gray -->
+    <color name="shopColor4">#2F4858</color>   <!-- Charcoal Blue -->
+    <color name="shopColor5">#1B262C</color>   <!-- Very Dark Navy -->
+    <color name="shopColor6">#4A4E69</color>   <!-- Dusty Purple -->
+    <color name="shopColor7">#22223B</color>   <!-- Midnight Blue -->
+    <color name="shopColor8">#283149</color>   <!-- Dark Indigo -->
+    <color name="shopColor9">#403F4C</color>   <!-- Dark Slate -->
+    <color name="shopColor10">#3F72AF</color>  <!-- Steel Blue -->
+    <color name="shopColor11">#364F6B</color>  <!-- Deep Ocean -->
+    <color name="shopColor12">#1F2041</color>  <!-- Dark Violet -->
+    <color name="shopColor13">#5C5470</color>  <!-- Smokey Purple -->
+    <color name="shopColor14">#222831</color>  <!-- Charcoal -->
+    <color name="shopColor15">#30475E</color>  <!-- Gunmetal -->
+
+    <!-- Custom extras -->
+    <color name="dashboardHighlight">#3A3A3A</color>
+    <color name="scrollContainerBg">#2C3A2D</color>
+    <color name="shopCardBg">#3A3A3A</color>
+    <color name="shopCardBtn">#FFFFFF</color>
+</resources>

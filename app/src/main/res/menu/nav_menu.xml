@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/menu_dashboard_icon"
+        android:title="@string/Dashboard" />
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/menu_add_expense_icon"
+        android:title="@string/add" />
+    <item
+        android:id="@+id/nav_shops"
+        android:icon="@drawable/menu_add_shop_icon"
+        android:title="@string/shops" />
+    <item
+        android:id="@+id/nav_reminders"
+        android:icon="@drawable/menu_add_reminder_icon"
+        android:title="@string/reminders"/>
+</menu>
