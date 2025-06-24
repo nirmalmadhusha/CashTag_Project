@@ -2,6 +2,7 @@ package com.s23010388.cashtag;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,11 +32,23 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSIONS = 100;
     private String[] REQUIRED_PERMISSIONS;
     BottomNavigationView bottomNav;
+    ConstraintLayout logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNav = findViewById(R.id.nav_bar);
+        logo = findViewById(R.id.logo_animation);
+
+        //logo animation
+        if (savedInstanceState == null) {
+            showLogoAnimation();
+        } else {
+            logo.setVisibility(View.GONE);
+            bottomNav.setVisibility(View.VISIBLE);
+        }
 
         // change status bar color for light  mode
         boolean isNight = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
@@ -63,11 +77,9 @@ public class MainActivity extends AppCompatActivity {
         }
         checkExactAlarmPermission();
 
-        bottomNav = findViewById(R.id.nav_bar);
-
-        if (savedInstanceState == null){
+       /* if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashBoard()).commit();
-        }
+        } */
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment;
@@ -93,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        }
+    }
     private boolean allPermissionsGranted(String[] permissions) {
         for (String permission : permissions) {
             if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
@@ -112,5 +124,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+    }
+    public void showLogoAnimation(){
+        new Handler().postDelayed(() -> {
+            logo.animate()
+                    .alpha(1f)
+                    .setDuration(1000)
+                    .withEndAction(() -> {
+                        new Handler().postDelayed(() -> {
+                            logo.setVisibility(View.GONE);
+
+                            // show nav bar
+                            bottomNav.setVisibility(View.VISIBLE);
+                            // load dashboard
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.fragment_container, new DashBoard())
+                                    .commit();
+                        }, 800);
+                    })
+                    .start();
+        },800);
     }
 }
