@@ -1,7 +1,13 @@
 package com.s23010388.cashtag;
 
 //ML kit imports
+import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.hardware.SensorEvent;
 import android.util.Log;
 
 import com.google.mlkit.vision.common.InputImage;
@@ -91,6 +97,11 @@ public class AddExpense extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    // Sensors
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private SensorEventListener lightSensorListener;
+    private boolean lightWarningShown = false;
 
     // camera Launcher
     private ActivityResultLauncher<Intent> cameraLauncher;
@@ -182,6 +193,7 @@ public class AddExpense extends Fragment {
         });
         // Scan mode
         Scan_mode_select.setOnClickListener(v -> {
+            lightWarningShown = false; // reset toast for each scan
             Expense_container.removeAllViews(); // Clear views
             View ScanModeView = Expense_inflater.inflate(R.layout.scan_mode, Expense_container, false);
             Expense_container.addView(ScanModeView);
@@ -206,7 +218,40 @@ public class AddExpense extends Fragment {
         });
         // default scan mode
         Scan_mode_select.performClick();
+
+        // Light sensor manage
+        sensorManager = (SensorManager) requireActivity().getSystemService(Context.SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        if (lightSensor != null) {
+            lightSensorListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    float lux = event.values[0];
+                    if (lux < 30 && !lightWarningShown) {
+                        Toast.makeText(getContext(), "Low light! Consider turning on flash for better receipt scanning.", Toast.LENGTH_SHORT).show();
+                        lightWarningShown = true;
+                    }
+                }
+
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+            };
+            sensorManager.registerListener(lightSensorListener, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            Toast.makeText(getContext(), "No light sensor detected on device.", Toast.LENGTH_SHORT).show();
+        }
+
+        // return method
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (sensorManager != null && lightSensorListener != null) {
+            sensorManager.unregisterListener(lightSensorListener);
+        }
     }
 
     public void addExpenses(View view) {
@@ -351,28 +396,29 @@ public class AddExpense extends Fragment {
         Button saveButton = requireView().findViewById(R.id.saveBtn);
         saveButton.setVisibility(View.VISIBLE);
         // Show extracted text
-        // Parse lines from the formatted string
-        //String[] lines = parsedText.split("\n\n");
-
-        //for (String line : lines) {
-            //if (line.trim().isEmpty()) continue;
         Log.d("TextBefore", "showExtractedText: "+parsedText);
-            EditText editText = new EditText(getContext());
-            editText.setText(parsedText);
-            editText.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
-            editText.setPadding(5, 16, 5, 16);
-            editText.setTextSize(14);
-            editText.setBackgroundColor(Color.BLACK); // Optional styling
-            resultView.addView(editText);
-        //}
+        EditText editText = new EditText(getContext());
+        editText.setText(parsedText);
+        editText.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        editText.setPadding(5, 16, 5, 16);
+        editText.setTextSize(14);
+        //change colors
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            editText.setTextColor(Color.WHITE);
+            editText.setBackgroundColor(Color.BLACK);
+        } else {
+            editText.setTextColor(Color.BLACK);
+            editText.setBackgroundColor(Color.WHITE);
+        }
+        resultView.addView(editText);
+
         container.setVisibility(View.VISIBLE);
         resultView.setVisibility(View.VISIBLE);
-        /*if (resultView != null) {
-            resultView.setVisibility(View.VISIBLE);
-            resultView.setText(parsedText);*/
+
 
 
     }

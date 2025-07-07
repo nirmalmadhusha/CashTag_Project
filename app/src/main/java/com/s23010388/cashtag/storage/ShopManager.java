@@ -30,11 +30,21 @@ public class ShopManager extends RecyclerView.Adapter<ShopManager.ShopViewHolder
     private final Context context;
     private final ActivityResultLauncher<Intent> imagePickerLauncher;
     private int selectedShopId = -1;
+    private final List<Integer> colorList;
+    private final java.util.Set<Integer> usedColors = new java.util.HashSet<>();
+
 
     public ShopManager(Context context, List<Shop> shopList, ActivityResultLauncher<Intent> imagePickerLauncher) {
         this.context = context;
         this.shopList = shopList;
         this.imagePickerLauncher = imagePickerLauncher;
+
+        // Initialize color list
+        colorList = new java.util.ArrayList<>();
+        colorList.add(ContextCompat.getColor(context, R.color.shopColor1));
+        colorList.add(ContextCompat.getColor(context, R.color.shopColor2));
+        colorList.add(ContextCompat.getColor(context, R.color.shopColor3));
+        colorList.add(ContextCompat.getColor(context, R.color.shopColor4));
     }
     public int getSelectedShopId() {
         return selectedShopId;
@@ -58,15 +68,24 @@ public class ShopManager extends RecyclerView.Adapter<ShopManager.ShopViewHolder
         holder.shopName.setText(shop.getName());
 
         // color list
-        int[] colorArray = new int[]{
-                ContextCompat.getColor(context, R.color.shopColor1),
-                ContextCompat.getColor(context, R.color.shopColor2),
-                ContextCompat.getColor(context, R.color.shopColor3),
-                ContextCompat.getColor(context, R.color.shopColor4),
-        };
+        // Pick a random color that hasn't been used yet
+        List<Integer> availableColors = new java.util.ArrayList<>(colorList);
+        availableColors.removeAll(usedColors);
 
-        int randomColor = colorArray[new Random().nextInt(colorArray.length)];
-        ((androidx.cardview.widget.CardView) holder.itemView).setCardBackgroundColor(randomColor);
+        int selectedColor;
+
+        if (!availableColors.isEmpty()) {
+            selectedColor = availableColors.get(new Random().nextInt(availableColors.size()));
+            usedColors.add(selectedColor);
+        } else {
+            // All colors used, reset and start again
+            usedColors.clear();
+            selectedColor = colorList.get(new Random().nextInt(colorList.size()));
+            usedColors.add(selectedColor);
+        }
+
+        ((androidx.cardview.widget.CardView) holder.itemView).setCardBackgroundColor(selectedColor);
+
 
 
         holder.showLocationBtn.setOnClickListener(v -> {

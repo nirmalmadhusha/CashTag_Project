@@ -5,107 +5,133 @@
     android:layout_width="match_parent"
     android:layout_height="600dp">
 
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="125dp"
+    <androidx.cardview.widget.CardView
+        app:layout_constraintVertical_bias="0.3"
+        android:id="@+id/formCard"
+        android:backgroundTint="@color/dashboardHighlight"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:labelFor="@id/entered_date"
-        android:text="Date"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:labelFor="@id/entered_category"
-        android:text="Category"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:labelFor="@id/entered_amount"
-        android:text="Amount"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <LinearLayout
+                style="@style/AddManual.Form.row.Style"
+                android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:labelFor="@id/entered_title"
-        android:text="@string/title"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    style="@style/AddManual.Form.row.Style.Icon"
+                    android:src="@drawable/title_manual_add_icon" />
 
-    <Spinner
-        android:id="@+id/entered_category"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/entered_amount" />
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/AddManual.Form.row.Style.TextView"
+                    android:labelFor="@id/entered_title"
+                    android:text="@string/title"
+                    />
 
-    <EditText
-        android:id="@+id/entered_title"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:id="@+id/entered_title"
+                    style="@style/AddManual.Form.row.Style.EditText"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AddManual.Form.row.Style"
+                android:layout_marginTop="40dp">
+
+                <ImageView
+                    style="@style/AddManual.Form.row.Style.Icon"
+                    android:src="@drawable/dollar_sign_manual_add_icon" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/AddManual.Form.row.Style.TextView"
+                    android:labelFor="@id/entered_amount"
+                    android:text="Amount"
+                    />
+
+                <EditText
+                    android:id="@+id/entered_amount"
+                    style="@style/AddManual.Form.row.Style.EditText"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AddManual.Form.row.Style"
+                android:layout_marginTop="40dp">
+
+                <ImageView
+                    style="@style/AddManual.Form.row.Style.Icon"
+                    android:src="@drawable/category_manual_add_icon" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/AddManual.Form.row.Style.TextView"
+                    android:labelFor="@id/entered_category"
+                    android:text="Category"
+                    />
+
+                <Spinner
+                    android:id="@+id/entered_category"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AddManual.Form.row.Style"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    style="@style/AddManual.Form.row.Style.Icon"
+                    android:src="@drawable/date_manual_add_icon" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/AddManual.Form.row.Style.TextView"
+                    android:labelFor="@id/entered_date"
+                    android:text="Date" />
+
+                <EditText
+                    android:id="@+id/entered_date"
+                    style="@style/AddManual.Form.row.Style.EditText"
+                    android:layout_marginStart="16dp"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="date" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/addExpensesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginEnd="60dp"
         android:text="ADD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/entered_amount"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/entered_title" />
-
-    <EditText
-        android:id="@+id/entered_date"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:ems="10"
-        android:focusable="false"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/entered_category" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

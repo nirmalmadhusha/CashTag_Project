@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:backgroundTint="@color/darkGray"
+        style="@style/ScanMode.Button.styles"
         android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <com.google.android.material.button.MaterialButton
-        android:backgroundTint="@color/darkGray"
+        style="@style/ScanMode.Button.styles"
         android:id="@+id/galleryButton"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
@@ -51,8 +51,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <com.google.android.material.button.MaterialButton
+        android:textColor="@color/textDark"
+        app:iconTint="@color/textDark"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/textTitle"
+        android:backgroundTint="@color/scan_btn_main_color"
         android:id="@+id/scanButton"
-        android:layout_width="80dp"
+        android:layout_width="180dp"
         android:layout_height="80dp"
         android:layout_marginBottom="15dp"
         android:text="Scan"
@@ -72,7 +77,7 @@
         android:layout_margin="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/black"
+        android:background="@color/editText"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

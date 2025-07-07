@@ -63,7 +63,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,10 @@
         app:layout_constraintVertical_bias="1.0"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/nav_menu"
-        android:visibility="gone"
+        android:background="@color/menu_bg"
+        app:itemActiveIndicatorStyle="@style/Widget.BottomNav.ActiveIndicator"
+        app:itemIconTint="@color/nav_item_selector"
+        android:visibility="visible"
         />
 
 

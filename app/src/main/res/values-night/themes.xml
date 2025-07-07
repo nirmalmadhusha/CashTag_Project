@@ -15,22 +15,43 @@
         <item name="android:textColor">@color/textPrimary</item>
     </style>
 
-    <!-- Dashboard Fragment Styles -->
-    <style name="Color.Dashboard.Total.view" parent="">
-        <item name="android:background">@drawable/rounded_corners_background</item>
-        <item name="android:backgroundTint">@color/dashboardHighlight</item>
+    <!-- Main Text -->
+    <style name="App.design.MainText" parent="">
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginTop">30dp</item>
         <item name="android:textColor">@color/textTitle</item>
+        <item name="android:textSize">12pt</item>
+        <item name="android:textStyle">bold</item>
     </style>
+    <!-- Nav bar -->
+    <style name="Widget.BottomNav.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/menu_active_indicator</item>
+    </style>
+
+    <!-- Dashboard Fragment Styles -->
+
+    <!-- Toggle button group -->
+    <style name="ToggleButtonStyle" parent="">
+        <item name="shapeAppearance">@style/ShapeAppearance.FullyRounded</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="backgroundTint">@color/selector_toggle_button</item>
+        <item name="android:textColor">@color/selector_toggle_text</item>
+    </style>
+
+    <style name="ShapeAppearance.FullyRounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 
     <style name="Color.Dashboard.Scroll.view" parent="">
         <item name="android:background">@drawable/rounded_corners_background</item>
-        <item name="android:backgroundTint">@color/scrollContainerBg</item>
     </style>
 
-    <style name="Color.Dashboard.Progress.view" parent="">
-        <item name="android:background">@drawable/rounded_corners_background</item>
-        <item name="android:backgroundTint">@color/backgroundCard</item>
-    </style>
     <style name="Color.Dashboard.Progress.bar" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressTint">@color/progressBar</item>
     </style>
@@ -39,7 +60,7 @@
 
     <!-- scan mode style -->
     <style name="AddExpense.background" parent="">
-        <item name="android:background">@drawable/image_preview</item>
+        <item name="android:background">@drawable/image_preview_day</item>
     </style>
 
     <!-- Add Shops Fragment Style -->

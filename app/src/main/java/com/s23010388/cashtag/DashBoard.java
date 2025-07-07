@@ -1,5 +1,6 @@
 package com.s23010388.cashtag;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -114,6 +116,7 @@ public class DashBoard extends Fragment {
 // Update the UI with the total spent
        // total_text.setText(String.format("Rs. %.2f", totalSpent));
 // set the default view
+        view.post(()-> btnDay.setChecked(true));
         view.post(() -> updateDashboard("day"));
 
         //view.post(() -> calculateCategoryProgress());
@@ -227,7 +230,11 @@ public class DashBoard extends Fragment {
 
         // Set percentage
         ProgressBar progressBar = progressItem.findViewById(R.id.categoryProgress);
-        progressBar.setProgress((int) percentage);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, (int) percentage);
+        animation.setDuration(800); // Duration in milliseconds
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
+
 
         // Add the new view to the container
         progressContainer.addView(progressItem);
