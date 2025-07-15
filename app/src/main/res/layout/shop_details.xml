@@ -6,15 +6,18 @@
     android:layout_height="wrap_content"
     style="@style/Color.AddShops.CardView.Background"
     app:cardCornerRadius="12dp"
-    android:layout_marginBottom="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="0dp"
     >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shopBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/shopName"

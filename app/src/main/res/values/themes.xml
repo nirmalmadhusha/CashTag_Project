@@ -125,6 +125,8 @@
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">5dp</item>
         <item name="backgroundTint">@color/shopCardBtn</item>
+        <item name="android:textColor">@color/shopCardText</item>
+        <item name="iconTint">@color/shopCardText</item>
     </style>
 
     <style name="Theme.CashTag" parent="Base.Theme.CashTag" />

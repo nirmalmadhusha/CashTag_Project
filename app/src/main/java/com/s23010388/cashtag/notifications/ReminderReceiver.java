@@ -17,6 +17,7 @@ public class ReminderReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         String title = intent.getStringExtra("title");
+        String description = intent.getStringExtra("description");
 
         // Create a channel (required for Android 8+)
         String channelId = "reminder_channel";
@@ -31,8 +32,8 @@ public class ReminderReceiver extends BroadcastReceiver {
         // Build and show notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("CashTag Reminder")
-                .setContentText(title)
+                .setContentTitle(title)
+                .setContentText(description)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
 

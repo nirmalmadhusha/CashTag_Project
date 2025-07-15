@@ -6,13 +6,16 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="12dp"
     android:layout_margin="8dp"
-    card_view:cardElevation="6dp">
+    card_view:cardElevation="6dp"
+    android:backgroundTint="@color/dashboardHighlight"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <ImageView
             android:id="@+id/deleteReminderBtn"
@@ -22,10 +25,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:contentDescription="Delete Reminder"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:src="@drawable/bin_icon"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:tint="@android:color/holo_red_dark" />
+            card_view:tint="@color/textTitle" />
 
         <TextView
             android:id="@+id/textReminderTitle"
@@ -42,32 +45,48 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textReminderDate"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Date : 2025-06-17"
-            android:textSize="14sp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textReminderTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Time : 8:00 AM"
-            android:textSize="14sp"
+            android:layout_marginHorizontal="20dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/textReminderDate" />
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/date_manual_add_icon"
+                card_view:tint="@color/cashGreen" />
+            <TextView
+                android:id="@+id/textReminderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="Date : 2025-06-17"
+                android:textSize="14sp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/time_icon"
+                card_view:tint="@color/cashGreen"
+                android:layout_marginStart="5dp"/>
+            <TextView
+                android:id="@+id/textReminderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Time : 00:00 AM"
+                android:textSize="14sp"
+                />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textReminderDescription"

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="200dp"
+    android:viewportWidth="360"
+    android:viewportHeight="200">
+
+    <!-- Gradient background -->
+    <path
+        android:fillColor="@color/shopColor1"
+        android:pathData="M0,0 H360 V200 H0 Z" />
+
+    <!-- Splash paint style wave overlay -->
+    <path
+        android:fillColor="@color/shopColor1end"
+        android:pathData="
+            M0,100
+            Q20,70 40,110
+            T80,90
+            Q100,130 120,80
+            T160,110
+            Q180,70 200,120
+            T240,90
+            Q260,130 280,80
+            T320,110
+            Q340,70 360,100
+            L360,200
+            L0,200
+            Z" />
+</vector>

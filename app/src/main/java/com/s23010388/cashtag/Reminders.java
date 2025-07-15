@@ -185,6 +185,7 @@ public class Reminders extends Fragment {
                         int alarmId = newReminder.getId();
                         Intent intent = new Intent(getContext(), ReminderReceiver.class);
                         intent.putExtra("title", title);
+                        intent.putExtra("description", description);
 
                         // use for sent notification when app is not running
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(

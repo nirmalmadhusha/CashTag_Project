@@ -29,6 +29,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -110,6 +111,22 @@ public class Shops extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_shops, container, false);
+
+        // search function
+        SearchView searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                shopManager.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                shopManager.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         // get the current location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
@@ -234,9 +251,6 @@ public class Shops extends Fragment {
                         Toast.makeText(getContext(), "Shop saved!", Toast.LENGTH_SHORT).show();
                         List<Shop> updatedShops = db.shopDao().getAllShops();
                         shopManager.updateList(updatedShops);
-                        Toast.makeText(getContext(), "Shop saved!", Toast.LENGTH_SHORT).show();
-
-
                     }
                 })
                 .setNegativeButton("Cancel", null)

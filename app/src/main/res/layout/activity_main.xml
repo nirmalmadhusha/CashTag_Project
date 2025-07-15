@@ -75,7 +75,7 @@
         android:background="@color/menu_bg"
         app:itemActiveIndicatorStyle="@style/Widget.BottomNav.ActiveIndicator"
         app:itemIconTint="@color/nav_item_selector"
-        android:visibility="visible"
+        android:visibility="gone"
         />
 
 

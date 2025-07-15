@@ -61,27 +61,21 @@
     <color name="deepOrange">#FF5722</color>
 
     <!-- shop card background colors -->
-    <color name="shopColor1">#FF4064</color>
+    <color name="shopColor1">#FD6198</color>
+    <color name="shopColor1end">#FF2864</color>
     <color name="shopColor2">#FAD961</color>
+    <color name="shopColor2end">#FFC107</color>
     <color name="shopColor3">#38EFE6</color>
+    <color name="shopColor3end">#00BCD4</color>
     <color name="shopColor4">#38EF7D</color>
-    <color name="shopColor5">#4D96FF</color>  <!-- Bright Blue -->
-    <color name="shopColor6">#C9F0FF</color>  <!-- Pale Sky Blue -->
-    <color name="shopColor7">#D0F4DE</color>  <!-- Mint Green -->
-    <color name="shopColor8">#90CAF9</color>  <!-- Soft Blue -->
-    <color name="shopColor9">#B5EAEA</color>  <!-- Pale Cyan -->
-    <color name="shopColor10">#2874A6</color> <!-- Deep Blue -->
-    <color name="shopColor11">#52B788</color> <!-- Strong Lime-Green -->
-    <color name="shopColor12">#4C956C</color> <!-- Soft Teal -->
-    <color name="shopColor13">#8FC1B3</color> <!-- Muted Teal -->
-    <color name="shopColor14">#A0AEC0</color> <!-- Muted Blue-Grey -->
-    <color name="shopColor15">#E3F2FD</color> <!-- Very Light Blue (near white) -->
+    <color name="shopColor4end">#26C485</color>
 
     <!-- Custom extras -->
     <color name="dashboardHighlight">#FFFFFF</color>
     <color name="scrollContainerBg">#DC000000</color>
     <color name="shopCardBg">#FFFFFF</color>
-    <color name="shopCardBtn">#000000</color>
+    <color name="shopCardBtn">#FFFFFF</color>
+    <color name="shopCardText">#000000</color>
     <color name="floatBtn">#FFFFFF</color>
     <color name="editText">#FFFFFF</color>
 
