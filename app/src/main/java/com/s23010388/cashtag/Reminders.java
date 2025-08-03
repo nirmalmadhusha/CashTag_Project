@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.s23010388.cashtag.models.Reminder;
 import com.s23010388.cashtag.notifications.ReminderReceiver;
@@ -142,7 +143,7 @@ public class Reminders extends Fragment {
             });
 
             // Build the dialog
-            new AlertDialog.Builder(getContext())
+            new MaterialAlertDialogBuilder(requireContext())
                     .setTitle("Add Reminder")
                     .setView(dialogView)
                     .setPositiveButton("Add", (dialogInterface, i) -> {
@@ -160,10 +161,9 @@ public class Reminders extends Fragment {
                         long insertedId = db.reminderDao().insert(newReminder);
                         newReminder.setId((int) insertedId);
 
-
                         // format date and time
-                        String[] dateParts = editDate.getText().toString().split("-");
-                        String[] timeParts = editTime.getText().toString().split(":");
+                        String[] dateParts = date.split("-");
+                        String[] timeParts = time.split(":");
 
                         int year = Integer.parseInt(dateParts[0]);
                         int month = Integer.parseInt(dateParts[1]) - 1;
@@ -172,7 +172,7 @@ public class Reminders extends Fragment {
                         int hour = Integer.parseInt(timeParts[0]);
                         int minute = Integer.parseInt(timeParts[1]);
 
-                        // time for the notification
+                        // Set calendar for alarm
                         Calendar cal = Calendar.getInstance();
                         cal.set(Calendar.YEAR, year);
                         cal.set(Calendar.MONTH, month);
@@ -181,13 +181,12 @@ public class Reminders extends Fragment {
                         cal.set(Calendar.MINUTE, minute);
                         cal.set(Calendar.SECOND, 0);
 
-                        // use intent
+                        // Intent to fire
                         int alarmId = newReminder.getId();
                         Intent intent = new Intent(getContext(), ReminderReceiver.class);
                         intent.putExtra("title", title);
                         intent.putExtra("description", description);
 
-                        // use for sent notification when app is not running
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                                 getContext(),
                                 alarmId,
@@ -195,17 +194,17 @@ public class Reminders extends Fragment {
                                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
                         );
 
-                        // save using alarm manager
                         AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
                         alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 
-
+                        // Refresh list
                         reminderList.clear();
                         reminderList.addAll(db.reminderDao().getAllReminders());
                         adapter.notifyDataSetChanged();
                     })
                     .setNegativeButton("Cancel", null)
                     .show();
+
         });
         return view;
     }

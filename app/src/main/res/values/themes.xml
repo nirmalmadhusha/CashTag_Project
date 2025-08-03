@@ -128,6 +128,13 @@
         <item name="android:textColor">@color/shopCardText</item>
         <item name="iconTint">@color/shopCardText</item>
     </style>
-
+    <style name="MaterialAlertDialog_Rounded" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/RoundedCornersDialog</item>
+    </style>
+    <!-- Dialog styles -->
+    <style name="RoundedCornersDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
     <style name="Theme.CashTag" parent="Base.Theme.CashTag" />
 </resources>

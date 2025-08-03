@@ -26,8 +26,8 @@
     <string-array name="expense_categories">
         <item>Food</item>
         <item>Transport</item>
-        <item>Shopping</item>
-        <item>Utilities</item>
+        <item>Grocery</item>
+        <item>Household</item>
         <item>Entertainment</item>
         <item>Others</item>
     </string-array>

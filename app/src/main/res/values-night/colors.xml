@@ -3,7 +3,7 @@
     <!-- Material-style theme colors for Dark mode -->
     <color name="primary">#81C784</color>            <!-- Light green (muted) -->
     <color name="onPrimary">#000000</color>          <!-- Black text on light green -->
-    <color name="secondary">#7DF0AF</color>          <!-- Muted blue -->
+    <color name="secondary">#7DF0AF</color>
     <color name="onSecondary">#000000</color>
     <color name="background">#121212</color>         <!-- True dark background -->
     <color name="onBackground">#FFFFFF</color>       <!-- White text on dark -->

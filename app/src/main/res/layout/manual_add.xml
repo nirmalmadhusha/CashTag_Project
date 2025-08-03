@@ -132,6 +132,7 @@
         android:layout_marginEnd="60dp"
         android:text="ADD"
         android:textColor="@color/textDark"
+        android:backgroundTint="@color/cashGreenLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

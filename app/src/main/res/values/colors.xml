@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Material-style theme colors for Light mode -->
-    <color name="primary">#7DE682</color>            <!-- Forest Green -->
+    <color name="primary">#0BAF69</color>            <!-- Forest Green -->
     <color name="onPrimary">#FFFFFF</color>          <!-- White text on primary -->
-    <color name="secondary">#03A9F4</color>          <!-- Sky Blue -->
+    <color name="secondary">#0BAF69</color>          <!-- Sky Blue -->
     <color name="onSecondary">#FFFFFF</color>
     <color name="background">#E6E6E6</color>         <!-- Light gray background -->
     <color name="onBackground">#212121</color>       <!-- Primary text on light -->

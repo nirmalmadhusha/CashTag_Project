@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.s23010388.cashtag.R;
 import com.s23010388.cashtag.models.Reminder;
 import com.s23010388.cashtag.notifications.ReminderReceiver;
@@ -51,7 +52,7 @@ public class ReminderManager extends RecyclerView.Adapter<ReminderManager.Remind
         holder.descriptionText.setText((reminder.getDescription()));
 
         holder.delete.setOnClickListener(v -> {
-            new AlertDialog.Builder(context)
+            new MaterialAlertDialogBuilder(context)
                     .setTitle("Delete Reminder")
                     .setMessage("Are you sure you want to delete this reminder?")
                     .setPositiveButton("Delete", (dialog, which) -> {
@@ -66,17 +67,19 @@ public class ReminderManager extends RecyclerView.Adapter<ReminderManager.Remind
                         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                         alarmManager.cancel(pendingIntent);
 
-                        // delete reminder in database
+                        // Delete from database
                         db.reminderDao().delete(reminder);
 
-                        // remove from list and update
+                        // Remove from list and update RecyclerView
                         reminderList.remove(position);
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position, reminderList.size());
+
                         Toast.makeText(context, "Reminder deleted", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton("Cancel", null)
                     .show();
+
         });
     }
 

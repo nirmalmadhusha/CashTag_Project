@@ -43,6 +43,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.s23010388.cashtag.models.Receipt;
 import com.s23010388.cashtag.models.Shop;
 import com.s23010388.cashtag.storage.AppDatabase;
@@ -191,6 +192,7 @@ public class Shops extends Fragment {
                         Toast.makeText(getContext(), "Showing your location", Toast.LENGTH_SHORT).show();
                     } else {
                         // fallback to default if location is null
+                        Toast.makeText(getContext(), "Can't find your location (Make sure GPS is ON)", Toast.LENGTH_SHORT).show();
                         LatLng defaultLatLng = new LatLng(6.9271, 79.8612); // Colombo
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLatLng, 12f));
                     }
@@ -236,7 +238,8 @@ public class Shops extends Fragment {
             return true;
         });
 
-        AlertDialog dialog = builder.setTitle("Add New Shop")
+        new MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Add New Shop")
                 .setView(dialogView)
                 .setPositiveButton("Add", (dialogInterface, which) -> {
                     String name = editShopName.getText().toString().trim();
@@ -255,14 +258,7 @@ public class Shops extends Fragment {
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
-        // Set dialog size explicitly after showing
-        Window window = dialog.getWindow();
-        if (window != null) {
-            int width = WindowManager.LayoutParams.MATCH_PARENT;
-            int height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-            window.setLayout(width, height);
-        }
     }
 
 }

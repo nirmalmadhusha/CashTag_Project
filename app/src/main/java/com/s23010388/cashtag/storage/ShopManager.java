@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.s23010388.cashtag.R;
 import com.s23010388.cashtag.models.Shop;
 import com.s23010388.cashtag.utility.ReceiptViewer;
@@ -132,6 +133,17 @@ public class ShopManager extends RecyclerView.Adapter<ShopManager.ShopViewHolder
                     .addToBackStack(null)
                     .commit();
         });
+        // delete shops
+        holder.itemView.setOnLongClickListener(v -> {
+            new MaterialAlertDialogBuilder(context, R.style.MaterialAlertDialog_Rounded)
+                    .setTitle("Delete Shop")
+                    .setMessage("Are you sure you want to delete this shop?")
+                    .setPositiveButton("Delete", (dialog, which) -> deleteShop(shop))
+                    .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                    .show();
+            return true;
+        });
+
     }
 
     @Override
@@ -183,6 +195,23 @@ public class ShopManager extends RecyclerView.Adapter<ShopManager.ShopViewHolder
             showReceiptsBtn = itemView.findViewById(R.id.ShowBillsBtn);
             addReceiptBtn = itemView.findViewById(R.id.AddReceiptsBtn);
         }
+    }
+    private void deleteShop(Shop shop) {
+        // Remove from DB
+        AppDatabase.getInstance(context).shopDao().delete(shop);
+
+        // Find index before removal
+        int index = filteredShops.indexOf(shop);
+
+        // Remove from lists
+        shopList.remove(shop);
+        filteredShops.remove(shop);
+
+        // Remove drawable mapping
+        assignedDrawables.remove(shop.getId());
+
+        // Notify adapter
+        notifyItemRemoved(index);
     }
 
 }

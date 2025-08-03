@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.s23010388.cashtag.R;
 import com.s23010388.cashtag.models.Receipt;
@@ -57,12 +58,16 @@ public class ReceiptViewer extends Fragment {
         List<Receipt> receipts = AppDatabase.getInstance(requireContext())
                 .receiptDao().getReceiptsByShop(shopId);
 
-        for (Receipt receipt : receipts) {
-            ImageView imageView = new ImageView(requireContext());
-            imageView.setImageURI(Uri.parse(receipt.imagePath));
-            imageView.setAdjustViewBounds(true);
-            imageView.setPadding(0, 16, 0, 16);
-            containerLayout.addView(imageView);
+        if (receipts.isEmpty()) {
+            Toast.makeText(requireContext(), "No receipts available for this shop.", Toast.LENGTH_SHORT).show();
+        } else {
+            for (Receipt receipt : receipts) {
+                ImageView imageView = new ImageView(requireContext());
+                imageView.setImageURI(Uri.parse(receipt.imagePath));
+                imageView.setAdjustViewBounds(true);
+                imageView.setPadding(0, 16, 0, 16);
+                containerLayout.addView(imageView);
+            }
         }
 
         return view;
