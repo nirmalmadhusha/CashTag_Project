@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.s23010388.cashtag.R;
 import com.s23010388.cashtag.models.Receipt;
 import com.s23010388.cashtag.storage.AppDatabase;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -27,6 +29,7 @@ public class ReceiptViewer extends Fragment {
 
     private static final String ARG_SHOP_ID = "shop_id";
     private int shopId;
+    private LinearLayout containerLayout;
 
     public ReceiptViewer() {
         // Required empty public constructor
@@ -54,7 +57,7 @@ public class ReceiptViewer extends Fragment {
         View view = inflater.inflate(R.layout.fragment_receipt_viewer, container, false);
 
         // Now load receipts by shopId and display
-        LinearLayout containerLayout = view.findViewById(R.id.receiptContainer);
+        containerLayout = view.findViewById(R.id.receiptContainer);
         List<Receipt> receipts = AppDatabase.getInstance(requireContext())
                 .receiptDao().getReceiptsByShop(shopId);
 
@@ -63,14 +66,44 @@ public class ReceiptViewer extends Fragment {
         } else {
             for (Receipt receipt : receipts) {
                 ImageView imageView = new ImageView(requireContext());
-                imageView.setImageURI(Uri.parse(receipt.imagePath));
+                // check file is available
+                Uri uri = Uri.parse(receipt.imagePath);
+                try {
+                    requireContext().getContentResolver().openInputStream(uri).close();
+                    imageView.setImageURI(Uri.parse(receipt.imagePath));
+                } catch (Exception e){
+                    imageView.setImageResource(R.drawable.ic_image_missing);
+                    Toast.makeText(requireContext(), "Receipt image missing!", Toast.LENGTH_SHORT).show();
+                }
                 imageView.setAdjustViewBounds(true);
                 imageView.setPadding(0, 16, 0, 16);
+
+                // delete option
+                imageView.setOnLongClickListener(v -> {
+                    new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
+                            .setTitle("Delete Receipt")
+                            .setMessage("Are you sure you want to delete this Receipt ?")
+                            .setPositiveButton("Delete", (dialog, which) -> deleteReceipt(receipt,imageView))
+                            .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                            .show();
+
+                    return true;
+                });
                 containerLayout.addView(imageView);
             }
         }
 
         return view;
+    }
+
+    private void deleteReceipt(Receipt receipt, View imageView){
+        AppDatabase db = AppDatabase.getInstance(requireContext());
+        db.receiptDao().delete(receipt);
+
+        // Remove from UI
+        containerLayout.removeView(imageView);
+
+        Toast.makeText(requireContext(), "Receipt deleted", Toast.LENGTH_SHORT).show();
     }
 }
 

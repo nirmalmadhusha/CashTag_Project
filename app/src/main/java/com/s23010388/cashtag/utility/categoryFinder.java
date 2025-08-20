@@ -23,6 +23,7 @@ public class categoryFinder {
         put("Flour", "Grocery");
         put("Bread", "Grocery");
         put("Pasta", "Grocery");
+        put("Viva" , "Grocery");
         put("Cooking Oil", "Grocery");
 
         // Food
@@ -30,6 +31,8 @@ public class categoryFinder {
         put("Meat", "Food");
         put("Chicken", "Food");
         put("Eggs", "Food");
+        put("Noodles" , "Food");
+        put("Cracker" , "Food");
         put("Cheese", "Food");
         put("Butter", "Food");
 

@@ -542,7 +542,7 @@ public class AddExpense extends Fragment {
             }
         }
         //add Total
-        resultBuilder.append("Total : ").append(textFinder.findTotal(rawLines));
+        //resultBuilder.append("Total : ").append(textFinder.findTotal(rawLines));
 
         showExtractedText(resultBuilder.toString());
     }

@@ -1,6 +1,7 @@
 package com.s23010388.cashtag.storage;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -14,6 +15,12 @@ public interface ReceiptDao {
     @Insert
     void insert(Receipt receipt);
 
+    @Delete
+    void delete(Receipt receipt);
+
     @Query("SELECT * FROM receipts WHERE shop_id = :shopId")
     List<Receipt> getReceiptsByShop(int shopId);
+
+    @Query("DELETE FROM receipts WHERE id = :receiptId")
+    void deleteById(int receiptId);
 }

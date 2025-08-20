@@ -34,15 +34,11 @@ public class textCleaner {
                 "till","amount","item","discount","balance","payment","total","time","*","name", "code",":"
         ));
         Pattern[] skipPatterns = new Pattern[]{
-                Pattern.compile("(?i)^x\\d+(\\.\\d+)?$"),// x2,x2 etc.
-                Pattern.compile("\\b[kK]\\b|:"),// k , :
-                Pattern.compile("\\d{1,2}"),
-                Pattern.compile("\\d{4}-\\d{2}-\\d{1,2} \\d{1,2}:\\d{2}"), //Date/time
-                Pattern.compile("\\d{4}-\\d{2}-\\d{1,2} \\d{1,2} \\d{1,2}:\\d{2}"),// Date /time
-                Pattern.compile("(?i)^date / time$"),
-                Pattern.compile("(?i)^till-\\d{1,2}"),
-                //Pattern.compile("^\\d{1,6}(\\.\\d{1,2})?$")
-                Pattern.compile("^0([.,]00)?$") // remove "0" or "0.00"
+                Pattern.compile("(?i)^x\\d+(\\.\\d+)?$"), // x1, x2 etc.
+                Pattern.compile("\\d{4}-\\d{2}-\\d{2}"),  // dates yyyy-MM-dd
+                Pattern.compile("\\d{1,2}:\\d{2}"),       // time hh:mm
+                Pattern.compile("^0([.,]00)?$"),         // zero amounts
+
         };
         for (String word : rawWords) {
             String trimmed = word.replaceAll("\\s+","");
@@ -77,7 +73,26 @@ public class textCleaner {
             }
 
         }
-        return cleaned;
-
+        // Normalize prices after cleaning
+        return normalizePrices(cleaned);
     }
+
+    public static List<String> normalizePrices(List<String> lines) {
+        List<String> normalizedLines = new ArrayList<>();
+        for (String line : lines) {
+            String trimmed = line.trim();
+            if (trimmed.matches("(?i)^(as|fs)\\s*\\d.*") || trimmed.matches("\\d+[.,]?\\d*")) {
+                // Convert "As" or "Fs" to "Rs"
+                String price = trimmed.replaceAll("(?i)^(as|fs)","Rs");
+                // Remove all characters except digits and dot
+                price = price.replaceAll("[^0-9.]", "");
+                if (!price.contains(".")) price += ".00";
+                trimmed = "Rs" + price;
+            }
+            normalizedLines.add(trimmed);
+        }
+        return normalizedLines;
+    }
+
+
 }
